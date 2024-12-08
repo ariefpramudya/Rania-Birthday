@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bouquet</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        canvas {
+            border: 1px solid white;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Fungsi untuk menggambar bunga
+        function drawFlower(x, y, color1, color2) {
+            ctx.beginPath();
+            ctx.arc(x, y, 40, Math.PI / 4, 5 * Math.PI / 4);
+            ctx.fillStyle = color1;
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(x, y, 40, -Math.PI / 4, 3 * Math.PI / 4);
+            ctx.fillStyle = color2;
+            ctx.fill();
+        }
+
+        // Gambar bunga dengan warna berbeda
+        drawFlower(200, 200, 'Tomato', 'Orange');
+        drawFlower(300, 200, 'SteelBlue', 'DarkTurquoise');
+        drawFlower(100, 250, 'IndianRed', 'LightSalmon');
+
+        // Fungsi untuk menggambar daun
+        function drawLeaf(x, y, angle) {
+            ctx.beginPath();
+            ctx.ellipse(x, y, 50, 25, angle, 0, 2 * Math.PI);
+            ctx.fillStyle = 'LimeGreen';
+            ctx.fill();
+        }
+
+        // Gambar daun
+        drawLeaf(150, 200, Math.PI / 6);
+        drawLeaf(350, 200, -Math.PI / 6);
+
+        // Ucapan selamat ulang tahun
+        ctx.font = '30px Arial';
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center';
+        ctx.fillText('Happy Birthday, Rania!', canvas.width / 2, 50);
+
+        ctx.font = '20px Arial';
+        ctx.fillText('Wishing you endless joy and love.', canvas.width / 2, 80);
+        ctx.fillText('You’ve always been special, and today is a reminder', canvas.width / 2, 110);
+        ctx.fillText('of how amazing you are.', canvas.width / 2, 140);
+    </script>
+</body>
+</html>
